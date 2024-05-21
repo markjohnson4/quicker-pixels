@@ -1,0 +1,36 @@
+{{ $langUrlPrefix := "" }}
+{{ $defaultLang := .Sites.First.Language.Lang }}
+{{ $thisLang := .Site.Language.Lang }}
+{{ if ne $thisLang $defaultLang }}
+{{ $langUrlPrefix = print "/" .Site.Language.Lang }}
+{{ end }}
+<footer class="border-top y-pad-lg bg-off">
+    <div class="container">
+        <h6>{{ i18n "allPages" }}</h6>
+        <div>{{ $home := $.Site.GetPage "/" }}
+          <a href="{{ $home.RelPermalink }}">{{ $home.Title }}</a></div>
+        {{ partial "walkinit.html" . }}
+        {{ $taxonomies := .Site.Taxonomies }}
+        {{ if $taxonomies}}
+        <h6 class="mt-lg">{{ i18n "allTaxonomies" }}</h6>
+        <ul>
+            
+            {{ range $taxname, $taxonomy := $taxonomies }}
+            {{ with $.Site.GetPage $taxname }}
+              <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            
+            {{ end }}
+              <ul>
+                
+                {{ range $termname, $item := $taxonomy }}
+                <li><a href="{{ $langUrlPrefix }}/{{ $taxname | urlize }}/{{ $termname | urlize }}">{{ $termname }}</a></li>
+                {{ end }}
+                
+              </ul>
+            {{ end }}
+          </ul>
+        {{ end }}
+    </div>
+    
+    
+</footer>

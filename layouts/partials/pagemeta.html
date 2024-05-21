@@ -1,0 +1,48 @@
+{{ if .Param "showMeta" }}
+
+{{ $langUrlPrefix := "" }}
+{{ $defaultLang := .Sites.First.Language.Lang }}
+{{ $thisLang := .Site.Language.Lang }}
+{{ if ne $thisLang $defaultLang }}
+{{ $langUrlPrefix = print "/" .Site.Language.Lang }}
+{{ end }}
+
+<div class="flex justify-center">
+<table>
+	{{ $page := . }}
+	{{ $taxonomies := .Site.Taxonomies }}
+	{{ range $taxname, $taxonomy := $taxonomies }}
+		{{ with $page.Param $taxname }}
+		
+		
+        <tr>
+            
+              <th class="text-right pr-sm">{{ $taxname | title }}</td>
+              <td>
+                
+                {{ range $index, $item := $page.Param $taxname }}
+				{{- if gt $index 0 }}, {{ end -}}<a href="{{ $langUrlPrefix }}/{{ $taxname | urlize }}/{{ $item | urlize }}">{{ $item }}</a>
+                {{ end }}
+                
+			  </td>
+            
+			</tr>
+			{{ end }}
+			{{ end }}
+	
+	
+	{{ if .Param "showMetaWords" }}
+	<tr>
+		<th class="text-right pr-sm">Words</th>
+		<td>{{ $.Page.WordCount }}</td>
+	</tr>
+	{{ end }}
+	{{ if .Param "showMetaDate" }}
+	<tr>
+		<th class="text-right pr-sm">Date</th>
+		<td><time datetime="{{ $.Page.Date.Format "2006-01-02" }}">{{ $.Page.Date.Format "2006-01-02" }}</time></td>
+	</tr>
+	{{ end }}
+</table>
+</div>
+{{ end }}

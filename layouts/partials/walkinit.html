@@ -1,0 +1,11 @@
+{{ $context := .GetPage "" }}
+<ul>  
+  {{ range $context.Pages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ if .Pages }}
+      {{ partial "walk.html" . }}
+    {{ end }}
+  {{ end }}
+</ul>

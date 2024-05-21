@@ -1,0 +1,19 @@
+{{ $parentUrl := .Get "parent_url" }}
+{{ $showDate := .Get "show_date" }}
+{{ $context :=  $.Page }}
+
+{{ if $parentUrl }}
+{{ $context = $.Site.GetPage $parentUrl }}
+{{ end }}
+
+{{ $pages := where $context.Pages "Title" "ne" "Hidden" }}
+{{ if eq (.Get "filter") "latest" }}
+{{ $pages = where $context.Pages "Title" "ne" "Hidden" | first 1 }}
+{{ end }}
+
+<ul>
+    {{ range $pages }}
+        <li><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if eq $showDate "true" }} ({{ .Date.Format "2006-01-02" }}){{ end }}</li>
+    {{ end }}
+</ul>
+

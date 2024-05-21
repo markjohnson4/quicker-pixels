@@ -1,0 +1,28 @@
+{{ $context := false }}
+{{ $parentUrl := .Get "parent_url" }}
+{{ $sort := .Get "sort" }}
+{{ $sortValue := "ByTitle" }}
+
+
+{{ if $parentUrl }}
+{{ $context = $.Site.GetPage $parentUrl }}
+{{ else }}
+{{ $context = $.Page }}
+{{ end }}
+<ul>
+    {{/* not DRY, sorry future me! */}}
+    {{ if eq $sort "abc"}}
+        {{ range $context.Sections.ByTitle }}
+            {{ if ne .Title "Hidden" }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        {{ end }}
+    {{ else }}
+        {{ range $context.Sections }}
+            {{ if ne .Title "Hidden" }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a> ({{ $.Page.Date.Format "2006-01-02" }})</li>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</ul>
+

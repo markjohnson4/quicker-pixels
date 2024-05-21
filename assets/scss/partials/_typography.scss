@@ -1,0 +1,43 @@
+p:empty {
+    display: none;
+}
+a.active {
+    pointer-events: none;
+}
+body {
+    font-size: var(--default_font_size);
+    line-height: var(--default_line_height);
+    font-family: var(--font_family);
+    color: var(--text_color);
+    background-color: var(--background_color);
+}
+hr {
+    border-width: 2px 0 0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--header_font_family);
+}
+
+@mixin headerVarsOutput($num) {
+    h#{$num} {
+        font-weight: var(--h#{$num}_weight);
+        line-height: var(--h#{$num}_line_height);
+        font-size: calc(var(--h#{$num}_size);
+    }
+}
+@for $var from 1 to 7 {
+    @include headerVarsOutput($var);
+}
+h1 {
+    text-align: center;
+}
+.lead {
+    text-align: var(--leadText_align);
+    font-size: calc(var(--leadText_size);
+}
+
+blockquote {
+    padding-left: 1rem;
+    border-left-width: 5px;
+    border-left-style: solid;
+}

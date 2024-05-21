@@ -1,0 +1,17 @@
+body { min-height: 100vh; }
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+*:focus {
+  outline-style: dashed;
+  outline-width: 2px;
+  outline-offset: 2px;
+}

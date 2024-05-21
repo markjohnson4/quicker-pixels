@@ -1,0 +1,14 @@
+[scrolltop]
+  other = 'Vuelve al comienzo'
+[parentPage]
+  other = "Página principal"
+[nextPage]
+  other = "Siguiente página"
+[previousPage]
+  other = "Pagina anterior"
+[childPages]
+  other = "Páginas secundarias"
+[allPages]
+  other = "Todas las páginas"
+[allTaxonomies]
+  other = "Todas las taxonomías"

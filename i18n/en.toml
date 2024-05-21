@@ -1,0 +1,16 @@
+[scrolltop]
+  other = 'Scroll to top'
+[home]
+  other = "Home"
+[parentPage]
+  other = "Parent Page"
+[nextPage]
+  other = "Next Page"
+[previousPage]
+  other = "Previous Page"
+[childPages]
+  other = "Child Pages"
+[allPages]
+  other = "All Pages"
+[allTaxonomies]
+  other = "All Taxonomies"

@@ -1,0 +1,44 @@
+
+<nav class="prose no-label ml-0 mt-lg">
+  {{- partial "child-links.html" . -}}
+  {{ if .Parent.Param "showSiblingNavOfChildPages" }}
+  <hr>
+  {{ $pages := where $.Page.Parent.Pages ".RelPermalink" "!=" "/-hidden/"  }}
+  <div class="flex justify-between children-y-0">
+    
+    <div class="pr-sm text-left">
+  {{ with $pages.Next $.Page }}
+  
+    
+    <h6>{{ i18n "previousPage" }}</h6>
+    <a href="{{ .Permalink }}" class="">{{ .Title }}</a>
+
+  {{ end }}
+</div>
+<div class="text-right pl-sm">
+  {{ with $pages.Prev $.Page }}
+    
+    
+    
+      <h6>{{ i18n "nextPage" }}</h6>
+    <a href="{{ .Permalink }}" class="">{{ .Title }}</a>
+
+    {{ end }}
+  </div>
+  </div>
+  
+  
+  
+
+{{ if ne (len $pages) 1 }}
+<hr class="hideIfFirst"  />
+{{ end }}
+<div class="text-center">
+<h6 class="">{{ i18n "parentPage" }}</h6><a href="{{ $.Page.Parent.Permalink }}">{{ $.Page.Parent.Title }}</a>
+</div>
+
+{{ end }}
+
+</nav>
+
+

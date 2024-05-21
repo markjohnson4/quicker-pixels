@@ -1,0 +1,31 @@
+// a mixin for outputting vars-based css properties, which then can be copy/pasted in the right places
+
+// step 1: create the include statement like below...
+// @include varsToInline(
+//     "size",
+//     "font-size",
+//     (
+//         "headerLink": 4rem,
+//         "leadText": 2.5rem
+//     )
+// );
+
+// step 2: look in the resulting CSS code and search "vars!" to follow the next steps
+
+@mixin varsToInline($prefix, $property, $nameValuesMap) {
+    /* vars! 1. put these vars in the front-matter */
+    :root {
+        @each $name, $value in $nameValuesMap {
+            --#{$prefix}-#{$name}: #{$value};
+        }
+    }
+    /* vars! 2. put this in your scss/css */
+    @each $name, $value in $nameValuesMap {
+        .#{$prefix} {
+            &-#{$name} {
+                #{$property}: var(--#{$prefix}-#{$name});
+            }
+        }
+    }
+    /* vars! 3. DON'T FORGET TO COMMENT OUT "@include varsToInline()" WHEN YOU'RE DONE! */
+}

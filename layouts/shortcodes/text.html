@@ -1,0 +1,2 @@
+<span {{ with .Get "style"}}style="{{ . | safeCSS }}"{{ end }} {{ with .Get "class"}}class="{{.}}"{{ end }}>{{ .Inner | markdownify }}</span>
+

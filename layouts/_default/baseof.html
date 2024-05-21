@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}">
+    {{- partial "head.html" . -}}
+    <body id="top" class="mt-0 {{ .Kind }} {{ .Layout }}">
+        {{- partial "header.html" . -}}
+        <main>
+            <div class="container">
+                {{- block "main" . }}{{- end }}
+             </div>
+             {{- partial "scrollTop.html" . -}}
+        </main>
+        {{- partial "footer.html" . -}}
+        {{- partial "scripts.html" . -}}
+    </body>
+</html>

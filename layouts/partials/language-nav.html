@@ -1,0 +1,10 @@
+{{ $thisLang := .Lang }}    
+{{ if .IsTranslated }}
+<nav class="border-bottom bg-off">
+<ul class="container flex justify-center align-center list-reset children-xgap-sm children-y-0">
+    {{ range .AllTranslations }}
+    <li class="mt-0"><a {{if eq $thisLang .Lang }}tabindex="-1"{{ end }} href="{{ .Permalink }}" class="pad-sm {{if eq $thisLang .Lang }}bg-accent active{{ end }}">{{ .Language.LanguageName }}</a></li>
+    {{ end }}
+    </ul>
+</nav>
+{{ end }}

@@ -1,0 +1,13 @@
+{{ if .Pages }}
+  <hr class="mt-lg">
+  <div class="text-center">
+  <h6 >{{ i18n "childPages" }}</h6>
+  {{ $showDate := .Param "childLinks_showDate" }}
+
+  <ul class="list-reset">
+      {{ range .Pages.ByWeight }}
+          <li><a href="{{ .Permalink }}">{{ .Title }}</a>{{ if eq $showDate "true" }} ({{ .Date.Format "2006-01-02" }}){{ end }}</li>
+      {{ end }}
+  </ul>
+  </div>
+  {{ end }}

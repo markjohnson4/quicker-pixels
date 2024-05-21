@@ -1,0 +1,9 @@
+{{ $main := false }}
+{{ if hugo.IsServer }}
+{{- $main = resources.Get "scss/vital.scss" | toCSS (dict "outputStyle" "expanded") }}
+{{ else }}
+{{- $main = resources.Get "scss/vital.scss" | toCSS | minify | fingerprint }}
+{{ end }}
+{{- $loadfirst := $main.Content | safeCSS }}
+{{ $settingsPage := $.Site.GetPage "/"}}
+<style type="text/css">{{- $loadfirst -}}</style>
