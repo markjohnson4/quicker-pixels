@@ -1,7 +1,7 @@
 {{ if .Param "showMeta" }}
 
 {{ $langUrlPrefix := "" }}
-{{ $defaultLang := .Sites.First.Language.Lang }}
+{{ $defaultLang := .Sites.Default.Language.Lang }}
 {{ $thisLang := .Site.Language.Lang }}
 {{ if ne $thisLang $defaultLang }}
 {{ $langUrlPrefix = print "/" .Site.Language.Lang }}
