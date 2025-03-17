@@ -23,5 +23,17 @@ image should be: 1200px by 630px tall or similar aspect ratio
 <meta property="og:audio:secure_url" content="{{ . }}" />
 <meta property="og:audio:type" content="audio/mp4" />
 {{ end }}
+{{- with .Params.video }}
+<meta property="og:video" content="{{ . }}">
+<meta property="og:video:secure_url" content="{{ . }}">
+<meta property="og:video:type" content="video/mp4">
+{{ end }}
+{{- with .Site.Params.video_width }}
+<meta property="og:video:width" content="{{ . }}" />
+{{ end }}
+{{- with .Site.Params.video_height }}
+<meta property="og:video:height" content="{{ . }}" />
+{{ end }}
+
 {{- with .Params.locale }}<meta property="og:locale" content="{{ . }}" />{{ end }}
 {{- with .Site.Params.title }}<meta property="og:site_name" content="{{ . }}" />{{ end }}
