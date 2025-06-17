@@ -11,7 +11,7 @@ defaultContentLanguage = 'en'
     languageName = "English"
     weight = 1
 [languages.es]
-   languageName = 'español'
+   languageName = 'Español'
    weight = 2
 
 # If you want to remove these taxonomies, uncomment below (and/or add new ones)

@@ -1,5 +1,11 @@
 [scrolltop]
   other = 'Vuelve al comienzo'
+[home]
+  other = "Inicio"
+[menu]
+  other = "El menú"
+[close]
+  other = "Cerrar el modal"
 [parentPage]
   other = "Página principal"
 [nextPage]

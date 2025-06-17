@@ -1,0 +1,21 @@
+{{ $langUrlPrefix := "" }}
+{{ $defaultLang := .Sites.Default.Language.Lang }}
+{{ $thisLang := .Site.Language.Lang }}
+{{ if ne $thisLang $defaultLang }}
+{{ $langUrlPrefix = print "/" .Site.Language.Lang }}
+{{ end }}
+
+<div>{{ $home := $.Site.GetPage "/" }}
+    <a href="{{ $home.RelPermalink }}">{{ $home.Title }}</a>
+</div>
+{{ $context := .GetPage "" }}
+<ul>  
+  {{ range $context.Pages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </li>
+    {{ if .Pages }}
+      {{ partial "walk.html" . }}
+    {{ end }}
+  {{ end }}
+</ul>

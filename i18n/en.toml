@@ -2,6 +2,10 @@
   other = 'Scroll to top'
 [home]
   other = "Home"
+[menu]
+  other = "Menu"
+[close]
+  other = "Close"
 [parentPage]
   other = "Parent Page"
 [nextPage]

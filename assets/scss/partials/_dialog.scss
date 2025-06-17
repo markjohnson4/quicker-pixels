@@ -1,0 +1,21 @@
+
+dialog:-internal-dialog-in-top-layer {
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+}
+
+dialog {
+    overscroll-behavior: contain;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: auto;
+    max-width: none; 
+  }

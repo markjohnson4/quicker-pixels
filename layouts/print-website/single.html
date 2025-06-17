@@ -1,0 +1,11 @@
+{{- define "main" }}
+    {{- partial "pageTitle.html" . -}}
+    {{- partial "description.html" . -}}
+        {{- partial "all-pages.html" . -}}
+
+    {{- partial "pagemeta.html" . -}}
+    {{- partial "toc.html" . -}}
+    {{ .Content }}
+    {{- partial "siblingNav.html" . -}}
+  
+{{- end }}

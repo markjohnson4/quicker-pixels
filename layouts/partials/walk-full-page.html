@@ -1,0 +1,12 @@
+
+  {{ range .Pages }}
+    <article>
+      {{- partial "breadcrumbs.html" . -}}
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+    </article>  
+  
+    {{ if .Pages }}
+      {{ partial "walk-full-page.html" . }}
+    {{ end }}
+  {{ end }}

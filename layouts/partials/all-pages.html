@@ -1,0 +1,46 @@
+<style>
+	article {
+		padding: 2rem 0;
+		margin: 0;
+	}
+	article + article {
+			border-top: 1px solid #000;
+		}
+	article.print-website {
+		display: none;
+	}
+	article h1 {
+		text-align: left;
+		margin-top: 0;
+	}
+	article .breadcrumbs {
+		background-color: transparent;
+	}
+	article .breadcrumbs a {
+		color: var(--text_color);
+		text-decoration: none;
+		padding: 0;
+	}
+	article .breadcrumbs .pad-smp {
+		color: var(--text_color);
+		
+	}
+	@media print
+    {
+        header, header + .breadcrumbs, footer, .container > h1, hr.first, main > .container > nav {
+			display: none;
+		}
+		body, h1, h2, h3, h4, h5, h6, a {
+			color: #000;
+		}
+    }
+	
+</style>
+<hr class="first">
+<article>
+	{{ $home := $.Site.GetPage "/" }}
+	<h1>{{ $home.Title }}</h1>
+	{{ $home.Content }}
+</article>
+
+    {{ partial "walkinit-full-page.html" . }}

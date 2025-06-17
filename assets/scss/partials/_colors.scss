@@ -1,54 +1,155 @@
-@mixin colorScheme($textColor, $backgroundColor, $backgroundColorOff, $actionColor, $accentColor) {
-    h1, h2, h3, h4, h5, h6 {
+@mixin colorScheme($textColor, $backgroundColor, $backgroundColorOff, $actionColor, $accentColor, $action_color_off, $text_color_off, $accent_color_off, $textColorOff) {
+    body {
+        color: var(--#{$textColor});
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         color: var(--#{$accentColor});
     }
+
     blockquote {
         border-left-color: var(--#{$accentColor});
     }
-    .minisection, aside, hr {
+
+    .minisection,
+    aside,
+    hr {
         border-color: var(--#{$accentColor});
     }
+
     aside:before {
         color: var(--#{$accentColor});
     }
+
     .c-accent {
         color: var(--#{$accentColor});
     }
+
     .border-bottom {
         border-bottom: 3px solid var(--#{$accentColor});
     }
+
     .border-top {
         border-top: 3px solid var(--#{$accentColor});
     }
+
     .bg-accent {
         background-color: var(--#{$accentColor});
         color: var(--#{$backgroundColor});
     }
-    a, .link {
+
+    a,
+    .link {
         color: var(--#{$actionColor});
+
         &:hover,
         &:focus {
             background-color: var(--#{$actionColor});
             color: var(--#{$backgroundColor});
         }
     }
-    .btn-primary {
-        color: var(--#{$backgroundColor});
-        background-color: var(--#{$actionColor});
-        border-color: var(--#{$actionColor});
-        &:hover,
-        &:focus {
-            background-color: var(--#{$textColor});
-            color: var(--#{$backgroundColor});
+
+    .btn {
+        color: var(--action_color);
+
+        &:hover {
+            background-color: var(--action_color);
+            color: #fff;
         }
     }
+
     *:focus {
         outline-color: var(--#{$actionColor});
     }
+
+    .border-bottom-off {
+            border-bottom: 3px solid var(--#{$accent_color_off});
+        }
+
+        .border-top-off {
+            border-top: 3px solid var(--#{$accent_color_off});
+        }
+
+
     .bg-off {
+        color: var(--#{$text_color_off});
         background-color: var(--#{$backgroundColorOff});
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--#{$accent_color_off});
+        }
+
+        blockquote {
+            border-left-color: var(--#{$accent_color_off});
+        }
+
+        .minisection,
+        aside,
+        hr {
+            border-color: var(--#{$accent_color_off});
+        }
+
+        aside:before {
+            color: var(--#{$accent_color_off});
+        }
+
+        .c-accent {
+            color: var(--#{$accent_color_off});
+        }
+
+        
+        .bg-accent {
+            background-color: var(--#{$accent_color_off});
+            color: var(--#{$backgroundColorOff});
+        }
+
+        a,
+        .link, .btn {
+            color: var(--#{$action_color_off});
+
+            &:hover,
+            &:focus {
+                background-color: var(--#{$action_color_off});
+                color: var(--#{$backgroundColorOff});
+            }
+        }
+
+    //     .btn {
+    //     color: var(--action_color);
+
+    //     &:hover {
+    //         background-color: var(--action_color);
+    //         color: #fff;
+    //     }
+    // }
+
+        .btn-primary {
+            color: var(--#{$backgroundColorOff});
+            background-color: var(--#{$action_color_off});
+            border-color: var(--#{$action_color_off});
+
+            &:hover,
+            &:focus {
+                background-color: var(--#{$text_color_off});
+                color: var(--#{$backgroundColorOff});
+            }
+        }
+
+        *:focus {
+            outline-color: var(--#{$action_color_off});
+        }
     }
 }
+
 body {
     font-size: var(--default_font_size);
     line-height: var(--default_line_height);
@@ -56,8 +157,15 @@ body {
     color: var(--text_color);
     background-color: var(--background_color);
 }
-@include colorScheme(text_color, background_color, background_color_off, action_color, accent_color);
-h1, h2, h3, h4, h5, h6 {
+
+@include colorScheme(text_color, background_color, background_color_off, action_color, accent_color, action_color_off, text_color_off, accent_color_off, text_color_off);
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--header_font_family);
 }
 
@@ -66,14 +174,14 @@ h1, h2, h3, h4, h5, h6 {
         font-weight: var(--h#{$num}_weight);
         line-height: var(--h#{$num}_line_height);
         font-size: calc(var(--h#{$num}_size);
+        }
     }
-}
-@for $var from 1 to 7 {
-    @include headerVarsOutput($var);
-}
 
-.lead {
-    text-align: var(--leadText_align);
-    font-size: calc(var(--leadText_size));
-}
+    @for $var from 1 to 7 {
+        @include headerVarsOutput($var);
+    }
 
+    .lead {
+        text-align: var(--leadText_align);
+        font-size: calc(var(--leadText_size));
+    }
